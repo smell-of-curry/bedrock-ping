@@ -53,14 +53,12 @@ function buildPingPacket(): Buffer {
  */
 function parsePongPayload(buf: Buffer): string {
   const stringLengthOffset = 1 + 8 + 8 + 16;
-  if (buf.length < stringLengthOffset + 2) 
-    throw new Error("Pong packet too short");
-  
+  if (buf.length < stringLengthOffset + 2) throw new Error("Pong packet too short");
+
   const strLen = buf.readUInt16BE(stringLengthOffset);
   const strStart = stringLengthOffset + 2;
-  if (buf.length < strStart + strLen) 
-    throw new Error("Pong string truncated");
-  
+  if (buf.length < strStart + strLen) throw new Error("Pong string truncated");
+
   return buf.subarray(strStart, strStart + strLen).toString("utf-8");
 }
 

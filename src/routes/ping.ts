@@ -38,7 +38,7 @@ function validatePort(raw: string | undefined): number {
   if (raw === undefined || raw === "") return config.defaultBedrockPort;
 
   const port = parseInt(raw, 10);
-  if (Number.isNaN(port) || port < MIN_PORT || port > MAX_PORT) 
+  if (Number.isNaN(port) || port < MIN_PORT || port > MAX_PORT)
     throw new ValidationError(`Port must be an integer between ${MIN_PORT} and ${MAX_PORT}`);
   return port;
 }

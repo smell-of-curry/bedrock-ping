@@ -19,7 +19,8 @@
     "test:e2e": "vitest run test/e2e/",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "vercel-build": "node scripts/vercel-build.mjs"
   },
   "keywords": [
     "minecraft",

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
-import { buildApp } from "../src/app";
+import { buildApp } from "../../src/app";
 import type { FastifyInstance } from "fastify";
 
 /**
@@ -64,7 +64,6 @@ describe("E2E: /ping validation", () => {
       method: "GET",
       url: "/ping?hostname=does-not-exist-at-all.invalid",
     });
-    // Should get past validation (port defaulted) and fail at DNS
     expect(res.statusCode).toBe(422);
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { parseServerInfo } from "../src/lib/raknetClient";
+import { parseServerInfo } from "../../src/lib/raknetClient";
 
 describe("parseServerInfo", () => {
   it("parses a full Bedrock server info string", () => {

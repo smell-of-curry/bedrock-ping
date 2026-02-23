@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
-import { buildApp } from "../src/app.js";
+import { buildApp } from "../../src/app.js";
 import type { FastifyInstance } from "fastify";
 
 let app: FastifyInstance;
@@ -79,7 +79,7 @@ describe("GET /ping", () => {
   });
 
   it("returns ping result for a mocked successful ping", async () => {
-    vi.spyOn(await import("../src/lib/raknetClient.js"), "pingServer").mockResolvedValueOnce({
+    vi.spyOn(await import("../../src/lib/raknetClient.js"), "pingServer").mockResolvedValueOnce({
       raw: "MCPE;Test;685;26.0.1;5;20;123;Sub;Survival;1;19132;19133",
       edition: "MCPE",
       motd: "Test",

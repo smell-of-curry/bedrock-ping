@@ -1,0 +1,48 @@
+---
+description: Prefer guard clauses (early returns) over nested blocks
+globs: "**/*.{ts,tsx,js,jsx}"
+alwaysApply: false
+---
+
+# Prefer early returns (guard clauses)
+
+- Use **guard clauses** to handle invalid inputs and edge cases first.
+- Avoid deep nesting (multiple `if`/`else` blocks).
+- Keep the “happy path” left-aligned and easy to scan.
+
+## Examples
+
+### Conditionals
+
+```ts
+// ❌ Avoid
+function parsePort(input?: string) {
+  if (input) {
+    const port = Number(input);
+    if (Number.isInteger(port) && port >= 1 && port <= 65535) {
+      return port;
+    }
+  }
+  return 19132;
+}
+
+// ✅ Prefer
+function parsePort(input?: string) {
+  if (!input) return 19132;
+
+  const port = Number(input);
+  if (!Number.isInteger(port)) return 19132;
+  if (port < 1 || port > 65535) return 19132;
+
+  return port;
+}
+```
+
+### Error handling
+
+```ts
+// ✅ Prefer: validate early, return early
+if (!hostname) {
+  return reply.status(400).send({ error: "VALIDATION_ERROR", message: "hostname is required" });
+}
+```

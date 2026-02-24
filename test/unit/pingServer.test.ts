@@ -68,8 +68,7 @@ describe("pingServer", () => {
   });
 
   it("resolves with parsed pong data on valid response", async () => {
-    const serverInfo =
-      "MCPE;Test Server;685;26.0.1;5;20;12345;SubMOTD;Survival;1;19132;19133";
+    const serverInfo = "MCPE;Test Server;685;26.0.1;5;20;12345;SubMOTD;Survival;1;19132;19133";
 
     const promise = pingServer("localhost", 19132, 5000);
 
